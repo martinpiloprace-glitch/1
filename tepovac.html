@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesionální tepovač — Detail stroje</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+            --accent: #f97316;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 16px 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper {
+            max-width: 650px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 4px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-container {
+            position: relative;
+            background: radial-gradient(circle, #ffffff 0%, #f1f5f9 100%);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: 240px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 600px) {
+            .image-container img { height: 280px; }
+        }
+
+        .badge-stock {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 5px rgba(249, 115, 22, 0.3);
+        }
+
+        .content-body {
+            padding: 24px 20px;
+        }
+
+        @media (min-width: 600px) {
+            .content-body { padding: 32px; }
+        }
+
+        .machine-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .machine-desc {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .promo-box {
+            background-color: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .promo-box svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            fill: var(--success);
+        }
+
+        .specs-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .specs-table {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-row:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .spec-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .spec-value {
+            color: var(--dark);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .action-container {
+            margin-top: 24px;
+        }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div>
+            <a href="index.html" class="back-link">&larr; Zpět na výběr strojů a kalkulaci</a>
+        </div>
+
+        <div class="product-card">
+            <div class="image-container">
+                <span class="badge-stock">Skladem</span>
+                <!-- Uprav název souboru obrázku podle potřeby -->
+                <img src="tepovac.png" alt="Tepovač">
+            </div>
+
+            <div class="content-body">
+                <h1 class="machine-title">Profesionální tepovač</h1>
+                <p class="machine-desc">
+                    Výkonný síťový extraktor pro hloubkové čištění koberců, čalounění, matrací a automobilových sedadel. Účinně odstraňuje skvrny i zápach.
+                </p>
+
+                <div class="promo-box">
+                    <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <span>Čisticí chemie je již v ceně pronájmu stroje!</span>
+                </div>
+
+                <h2 class="specs-title">Technické parametry</h2>
+                <div class="specs-table">
+                    <div class="spec-row">
+                        <span class="spec-label">Příkon</span>
+                        <span class="spec-value">cca 1400 W</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Objem nádrže</span>
+                        <span class="spec-value">8 / 7 l (čistá / špinavá)</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Pošet střiků</span>
+                        <span class="spec-value">Tlakové vstřikování</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Hmotnost</span>
+                        <span class="spec-value">cca 9.8 kg</span>
+                    </div>
+                </div>
+
+                <div class="action-container">
+                    <a href="index.html" class="btn-primary">Přejít k poptávce stroje</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
